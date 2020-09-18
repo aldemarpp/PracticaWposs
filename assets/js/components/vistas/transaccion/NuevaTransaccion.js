@@ -91,7 +91,6 @@ function NuevaTransaccion() {
 			hora: fecha.getHours() + ':' + fecha.getMinutes() + ':' + fecha.getSeconds()
 		});
 		setTipo('Retiro');
-		setCuenta('');
 		setDestino('');
 		setMonto('');
 		setMensaje('');
@@ -113,9 +112,20 @@ function NuevaTransaccion() {
 						<Grid item md={12} xs={12}>
 							<Divider />
 						</Grid>
-						<Grid item xs={12} md={4}>
+						<Grid item xs={6} md={4}>
 							<TextField
-								type="number"
+								disabled
+								value={Codigo}
+								onChange={(event) => {
+									setCuenta(event.target.value);
+								}}
+								label="Código de Transacción (aleatorio)"
+								fullWidth={true}
+							/>
+						</Grid>
+						<Grid item xs={6} md={4}>
+							<TextField
+								disabled
 								value={Cuenta}
 								onChange={(event) => {
 									setCuenta(event.target.value);
@@ -167,6 +177,7 @@ function NuevaTransaccion() {
 									onChange={(event) => {
 										setTipo(event.target.value);
 										setDestino('');
+										setCodigo((numero = Math.round(Math.random() * (99999 - 1) + 1)));
 										setMonto('');
 										setMensaje('');
 									}}
