@@ -17,7 +17,7 @@ function App(props) {
 				<AppNavBar />
 				<Grid container>
 					<Switch>
-						<Route path="/auth/login" exact component={Login} />
+						<Route path="/" exact component={Login} />
 						<Route path="/usuarios" exact component={TabUsuario} />
 						<Route path="/transacciones" exact component={TabTransaccion} />
 					</Switch>

@@ -32,7 +32,7 @@ export const MenuDerecha = ({ classes, textoUsuario, fotoUsuario }) => (
         />
       </ListItem>
       <Divider />
-      <ListItem component={Link} button to="/auth/login">
+      <ListItem component={Link} button to="/">
         <Icon path={mdiAccountBox} size={1} color="red" />
         <ListItemText
           classes={{ primary: classes.listItemText }}

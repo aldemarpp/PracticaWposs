@@ -83,8 +83,8 @@ export default function SimpleTabs(onchangeTab) {
 					<Paper className={classes.paper}>
 						<div className={classes.root}>
 							<Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary">
-								<Tab label="Usuarios" {...a11yProps(0)} />
-								<Tab label="Nuevo Usuario" {...a11yProps(1)} />
+								<Tab label="Nuevo Usuario" {...a11yProps(0)} />
+								<Tab label="Usuarios" {...a11yProps(1)} />
 							</Tabs>
 							<SwipeableViews
 								axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -92,10 +92,10 @@ export default function SimpleTabs(onchangeTab) {
 								onChangeIndex={onChangeIndex}
 							>
 								<TabUsuario value={value} index={0}>
-									<Usuarios onChangeIndex={onChangeIndex} />
+									<NuevoUsuario onChangeIndex={onChangeIndex} />
 								</TabUsuario>
 								<TabUsuario value={value} index={1}>
-									<NuevoUsuario />
+									<Usuarios />
 								</TabUsuario>
 							</SwipeableViews>
 						</div>

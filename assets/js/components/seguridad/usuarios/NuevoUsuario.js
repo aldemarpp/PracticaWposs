@@ -98,7 +98,7 @@ function NuevoUsuario() {
 			password: addPassword,
 			estado: addEstado,
 			saldo: addSaldo
-		})
+		});
 		setAddDocumento('');
 		setAddNombre('');
 		setAddApellidos('');
@@ -155,7 +155,10 @@ function NuevoUsuario() {
 								value={addEmail}
 								onChange={(event) => {
 									setAddEmail(event.target.value);
-									if (addEmail.length > 15 || !/^[A-Za-z\s]+$/.test(addEmail)) {
+									if (
+										addEmail.length > 15 ||
+										!/\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)/.test(valor)
+									) {
 										error.addEmail = true;
 										textoAyuda.addEmail = 'Utilice un correo válido';
 										seterror(error);
