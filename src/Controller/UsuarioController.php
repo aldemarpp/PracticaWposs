@@ -76,9 +76,32 @@ class UsuarioController extends AbstractController
         try {
             
             $todo = $this->getDoctrine()->getRepository(Usuario::class, 'default');
-            $todo = $this->usuarioRepository->Insertar($documento, $nombre, $apellidos, $email, $password, $estado);
+            $todo = $this->usuarioRepository->Buscar($documento);        
+        
+            $documento_bd=$todo['documento'];
+            $email_bd=$todo['email'];
+
+            if ($documento===$documento_bd || $email===$email_bd) {
+            return $this->json([
+                'message' => ['text'=>['Ya existe un usuario con el N° de Documento: '.$documento_bd] , 'level'=>'warning']
+                ]);
+            }else{
+                $todo = $this->usuarioRepository->Insertar($documento, $nombre, $apellidos, $email, $password, $estado);
+            }
             $documento_usu = $documento;
-                                   
+
+             /* if ($documento==$documento_bd) {
+            return $this->json([
+                'message' => ['text'=>['Ya existe un usuario con el N° de Documento: '.$documento_bd] , 'level'=>'warning']
+                ]);
+            }else if ($email==$email_bd) {
+                return $this->json([
+                    'message' => ['text'=>['Ya existe un usuario con el Email: '.$email_bd] , 'level'=>'warning']
+                ]);
+            }else{
+                $todo = $this->usuarioRepository->Insertar($documento, $nombre, $apellidos, $email, $password, $estado);
+            }*/
+            
             $todo = $this->usuarioRepository->InsertarCuenta($n_cuenta, $documento_usu, $saldo, $estado);
             $usuario = $this->usuarioRepository->BuscarUsuario($nombre); 
             $todo = $this->usuarioRepository->Buscar($documento);

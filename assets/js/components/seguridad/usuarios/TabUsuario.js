@@ -11,8 +11,6 @@ import TodoContextProvider from './TodoContext';
 import EstSnackBar from './EstSnackBar';
 import Usuarios from './Usuarios';
 import NuevoUsuario from './NuevoUsuario';
-import DetallesUsuario from './DetallesUsuario';
-import EditarUsuario from './EditarUsuario';
 
 function TabUsuario(props) {
 	const { children, value, index, ...other } = props;
@@ -87,8 +85,6 @@ export default function SimpleTabs(onchangeTab) {
 							<Tabs value={value} onChange={handleChange} indicatorColor="primary" textColor="primary">
 								<Tab label="Usuarios" {...a11yProps(0)} />
 								<Tab label="Nuevo Usuario" {...a11yProps(1)} />
-								<Tab label="Editar Usuario" {...a11yProps(2)} disabled />
-								<Tab label="Detalles Usuario" {...a11yProps(3)} disabled />
 							</Tabs>
 							<SwipeableViews
 								axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
@@ -100,12 +96,6 @@ export default function SimpleTabs(onchangeTab) {
 								</TabUsuario>
 								<TabUsuario value={value} index={1}>
 									<NuevoUsuario />
-								</TabUsuario>
-								<TabUsuario value={value} index={2}>
-									<EditarUsuario data={data} />
-								</TabUsuario>
-								<TabUsuario value={value} index={3}>
-									<DetallesUsuario data={data} />
 								</TabUsuario>
 							</SwipeableViews>
 						</div>

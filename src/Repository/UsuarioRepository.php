@@ -22,8 +22,9 @@ class UsuarioRepository extends ServiceEntityRepository
     public function Mostrar(){
         try {
             $conn = $this->getEntityManager()->getConnection();
-            $stm = $conn->prepare(" SELECT usu.documento, usu.nombre, usu.apellidos, usu.email, usu.password, usu.estado
-            FROM usuario usu
+            $stm = $conn->prepare(" SELECT usu.documento, usu.nombre, usu.apellidos, usu.email, usu.password, usu.estado, cue.n_cuenta
+            FROM usuario usu, cuenta cue
+            WHERE usu.documento=cue.documento_usu GROUP BY usu.documento
             ORDER BY usu.documento");
             $stm->execute([]);
             $res = $stm->fetchAll();

@@ -22,7 +22,7 @@ class TransaccionRepository extends ServiceEntityRepository
     public function Mostrar(){
         try {
             $conn = $this->getEntityManager()->getConnection();
-            $stm = $conn->prepare(" SELECT tra.cod_transaccion, tra.tipo_trans, tra.cuenta, tra.cuenta_destino, tra.monto, tra.fecha, tip.cod_tipo, usu.nombre, usu.documento, cue.n_cuenta, cue.documento_usu 
+            $stm = $conn->prepare(" SELECT tra.cod_transaccion, tra.tipo_trans, tra.cuenta, tra.cuenta_destino, tra.monto, tra.fecha, tra.hora, tip.cod_tipo, usu.nombre, usu.documento, cue.n_cuenta, cue.documento_usu 
             FROM transaccion tra, tipo_transaccion tip, usuario usu, cuenta cue 
             WHERE usu.documento=1091674950 AND tra.cuenta=cue.n_cuenta AND cue.documento_usu = usu.documento AND tra.tipo_trans=tip.cod_tipo 
             GROUP BY tra.cod_transaccion 

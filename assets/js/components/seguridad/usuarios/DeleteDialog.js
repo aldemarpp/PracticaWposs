@@ -11,7 +11,7 @@ const Transicion = React.forwardRef(function Transition(props, ref) {
 function DeleteDialog(props) {
 	const context = useContext(TodoContext);
 
-	let titulo = '¿Desea cambiar el estado del Estudiante?';
+	let titulo = '¿Desea cambiar el estado del Usuario?';
 	let estado = 'Activo';
 
 	if (props.todo.estado == estado) {

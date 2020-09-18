@@ -91,7 +91,7 @@ class TodoContextProvider extends Component {
 					});
 					todo.documento = response.data.todo.documento;
 					todo.nombre = response.data.todo.nombre;
-					todo.apellido = response.data.todo.apellido;
+					todo.apellidos = response.data.todo.apellidos;
 					todo.email = response.data.todo.email;
 					todo.password = response.data.todo.password;
 					todo.estado = response.data.todo.estado;

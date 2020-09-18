@@ -62,7 +62,7 @@ const style = {
 		width: 400,
 		marginBottom: 20
 	},
-	estado:{
+	estado: {
 		color: '#28B463'
 	}
 };
@@ -87,12 +87,14 @@ function Usuarios(props) {
 		setPage(0);
 	};
 
-	function busqueda(termino){
+	function busqueda(termino) {
 		return function(filtro) {
 			return (
 				filtro.nombre.toLowerCase().includes(termino.toLowerCase()) ||
 				filtro.email.toLowerCase().includes(termino.toLowerCase()) ||
-				!termino)}											
+				!termino
+			);
+		};
 	}
 
 	function historyBack() {
@@ -108,7 +110,8 @@ function Usuarios(props) {
 				fullWidth
 				placeholder="Buscar..."
 				onChange={(event) => {
-					setTermino(event.target.value)}}
+					setTermino(event.target.value);
+				}}
 				value={termino}
 				style={style.search}
 				InputProps={{
@@ -117,7 +120,8 @@ function Usuarios(props) {
 							<Icon path={mdiCardSearch} size={1.5} color="red" />
 						</InputAdornment>
 					)
-				}}/>
+				}}
+			/>
 			<Container style={style.container} component="main" maxWidth="lg" justify="center">
 				<TableContainer component={Paper} style={style.space}>
 					<Table style={style.table} aria-label="customized table">
@@ -157,24 +161,16 @@ function Usuarios(props) {
 											<Typography>{todo.email}</Typography>
 										</TableCell>
 										<TableCell align="right">
-										<Typography style={todo.estado==='Activo' ? style.estado:null}>{todo.estado}</Typography>
+											<Typography style={todo.estado === 'Activo' ? style.estado : null}>
+												{todo.estado}
+											</Typography>
 										</TableCell>
 										<TableCell align="right">
 											<Fragment>
-												<IconButton
-													onClick={(e) => {
-														onChangeIndex(2, todo, e);
-													}}
-												>
+												<IconButton>
 													<Icon path={mdiAccountEdit} size={1} color="red" />
 												</IconButton>
-												<IconButton
-													color="primary"
-													component="span"
-													onClick={(e) => {
-														onChangeIndex(3, todo, e);
-													}}
-												>
+												<IconButton color="primary" component="span">
 													<Icon path={mdiEyeSettings} size={1} color="red" />
 												</IconButton>
 												<IconButton

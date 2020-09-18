@@ -115,7 +115,7 @@ function NuevaTransaccion() {
 						</Grid>
 						<Grid item xs={12} md={4}>
 							<TextField
-								type="text"
+								type="number"
 								value={Cuenta}
 								onChange={(event) => {
 									setCuenta(event.target.value);
@@ -197,7 +197,7 @@ function NuevaTransaccion() {
 						<Grid container spacing={2}>
 							<Grid item xs={12} md={4}>
 								<TextField
-									type="text"
+									type="number"
 									value={Monto}
 									onChange={(event) => {
 										setMonto(event.target.value);
@@ -211,7 +211,7 @@ function NuevaTransaccion() {
 						<Grid container spacing={2}>
 							<Grid item xs={12} md={4}>
 								<TextField
-									type="text"
+									type="number"
 									value={Monto}
 									onChange={(event) => {
 										setMonto(event.target.value);
@@ -225,7 +225,7 @@ function NuevaTransaccion() {
 						<Grid container spacing={2}>
 							<Grid item xs={12} md={4}>
 								<TextField
-									type="text"
+									type="number"
 									value={Monto}
 									onChange={(event) => {
 										setMonto(event.target.value);
@@ -236,7 +236,7 @@ function NuevaTransaccion() {
 							</Grid>
 							<Grid item xs={12} md={4}>
 								<TextField
-									type="text"
+									type="number"
 									value={Destino}
 									onChange={(event) => {
 										setDestino(event.target.value);

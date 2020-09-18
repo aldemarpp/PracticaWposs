@@ -9,9 +9,11 @@ class TodoContextProvider extends Component {
 		super(props);
 		this.state = {
 			todos: [],
+			tipo: [],
 			message: {}
 		};
 		this.readTodo();
+		this.readUsuario();
 	}
 
 	//read
@@ -21,6 +23,19 @@ class TodoContextProvider extends Component {
 			.then((response) => {
 				this.setState({
 					todos: response.data
+				});
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	}
+
+	readUsuario() {
+		axios
+			.get('api/tipo_transaccion/read')
+			.then((response) => {
+				this.setState({
+					tipo: response.data
 				});
 			})
 			.catch((error) => {

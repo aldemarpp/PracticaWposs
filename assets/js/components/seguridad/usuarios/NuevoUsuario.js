@@ -89,6 +89,16 @@ function NuevoUsuario() {
 			estado: addEstado,
 			saldo: addSaldo
 		});
+		console.log({
+			documento: addDocumento,
+			n_cuenta: addCuenta,
+			nombre: addNombre,
+			apellidos: addApellidos,
+			email: addEmail + domain,
+			password: addPassword,
+			estado: addEstado,
+			saldo: addSaldo
+		})
 		setAddDocumento('');
 		setAddNombre('');
 		setAddApellidos('');

@@ -71,11 +71,10 @@ function Transaccion(props) {
 	const onChangeIndex = props.onChangeIndex;
 	const context = useContext(TodoContext);
 	console.log(context.todos);
+	let Tipo = '';
 	let Fecha;
 	let filtro = {};
 	let Nombre = '';
-	let tipo = '';
-	const [ Departamento, setDepartamento ] = useState('');
 	const [ termino, setTermino ] = useState('');
 	const [ eliminarVisible, setEliminarVisible ] = useState(false);
 	const [ transaccionEliminar, setTransaccionEliminar ] = useState(null);
@@ -93,11 +92,13 @@ function Transaccion(props) {
 
 	function busqueda(termino) {
 		return function(filtro) {
-			return (
-				filtro.registro.toLowerCase().includes(termino.toLowerCase()) ||
-				filtro.descripcion.toLowerCase().includes(termino.toLowerCase()) ||
-				!termino
-			);
+			filtro.cod_transaccion.toString().includes(termino.toLowerCase()) ||
+				filtro.tipo_trans.toLowerCase().includes(termino.toLowerCase()) ||
+				filtro.cuenta.toLowerCase().includes(termino.toLowerCase()) ||
+				filtro.cuenta_destino.toLowerCase().includes(termino.toLowerCase()) ||
+				filtro.monto.toString().includes(termino.toLowerCase()) ||
+				filtro.fecha.toString().includes(termino.toLowerCase()) ||
+				!termino;
 		};
 	}
 
@@ -125,29 +126,6 @@ function Transaccion(props) {
 					)
 				}}
 			/>
-			<Grid container spacing={2} style={style.grid}>
-				<Grid item xs={4} md={4}>
-					<TextField
-						disabled
-						type="text"
-						value="Sistemas e Informática"
-						label="Departamento"
-						fullWidth={true}
-					/>
-				</Grid>
-				<Grid item xs={4} md={4}>
-					<TextField
-						disabled
-						type="text"
-						value="Laboratorio de Física"
-						label="Laboratorio"
-						fullWidth={true}
-					/>
-				</Grid>
-				<Grid item xs={4} md={4}>
-					<TextField disabled type="text" value="Armando Santana" label="Laboratorista" fullWidth={true} />
-				</Grid>
-			</Grid>
 			<Container style={style.container} component="main" maxWidth="lg" justify="center">
 				<TableContainer component={Paper}>
 					<Table style={style.table} aria-label="customized table">
@@ -155,13 +133,22 @@ function Transaccion(props) {
 						<TableHead style={style.tableHead}>
 							<TableRow>
 								<TableCell style={style.tableCell} align="center">
-									Código Transacción
+									Transacción
 								</TableCell>
 								<TableCell style={style.tableCell} align="center">
 									Tipo
 								</TableCell>
 								<TableCell style={style.tableCell} align="center">
-									Cuenta
+									Usuario
+								</TableCell>
+								<TableCell style={style.tableCell} align="center">
+									Cuenta #1
+								</TableCell>
+								<TableCell style={style.tableCell} align="center">
+									Cuenta #2
+								</TableCell>
+								<TableCell style={style.tableCell} align="center">
+									Fecha - Hora
 								</TableCell>
 								<TableCell style={style.tableCell} align="center">
 									Monto
@@ -188,29 +175,41 @@ function Transaccion(props) {
 										{/*OBSERVACIÓN*/}
 										<TableCell align="center">
 											<Typography style={{ whiteSpace: 'pre-wrap' }}>
-												{todo.tipo_trans}
+												{context.tipo.map((res) => {
+													if (res.cod_tipo == todo.tipo_trans) {
+														Tipo = res.cod_tipo + '-' + res.nombre;
+													}
+												})}
+												{Tipo}
+											</Typography>
+										</TableCell>
+										<TableCell align="center">
+											<Typography style={{ whiteSpace: 'pre-wrap' }}>
+												{todo.documento + ' // ' + todo.nombre}
 											</Typography>
 										</TableCell>
 										<TableCell align="center">
 											<Typography style={{ whiteSpace: 'pre-wrap' }}>{todo.cuenta}</Typography>
 										</TableCell>
 										<TableCell align="center">
+											<Typography style={{ whiteSpace: 'pre-wrap' }}>
+												{todo.cuenta_destino}
+											</Typography>
+										</TableCell>
+										<TableCell align="center">
+											<Typography style={{ whiteSpace: 'pre-wrap' }}>
+												{todo.fecha + ' // ' + todo.hora}
+											</Typography>
+										</TableCell>
+										<TableCell align="center">
 											<Typography style={{ whiteSpace: 'pre-wrap' }}>{todo.monto}</Typography>
 										</TableCell>
 										<TableCell align="center">
 											<Fragment>
-												<IconButton
-													onClick={(e) => {
-														onChangeIndex(2, todo, e);
-													}}
-												>
+												<IconButton>
 													<Icon path={mdiFileDocumentEdit} size={1} color="red" />
 												</IconButton>
-												<IconButton
-													onClick={(e) => {
-														onChangeIndex(3, todo, e);
-													}}
-												>
+												<IconButton>
 													<Icon path={mdiEyeCheck} size={1} color="red" />
 												</IconButton>
 												<IconButton
